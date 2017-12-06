@@ -24,7 +24,10 @@ const pool = new Pool({
 app.get('/next', (req, res, next) => {
   pool.query('SELECT * FROM labeling WHERE classified = false LIMIT $1', [1])
     .then(dbr => {
-        res.status(200).send(dbr.rows[0])
+        if (dbr.rows.length > 0)
+          res.status(200).send(dbr.rows[0])
+        else
+          res.status(200).send({})
     })
     .catch(err => {
       console.log(err)
@@ -35,7 +38,10 @@ app.get('/next', (req, res, next) => {
 app.get('/:id', (req, res, next) => {
   pool.query('SELECT * FROM labeling WHERE id = $1', [req.params.id])
     .then(dbr => {
-        res.status(200).send(dbr.rows[0])
+        if (dbr.rows.length > 0)
+          res.status(200).send(dbr.rows[0])
+        else
+          res.status(200).send({})
     })
     .catch(err => {
       console.log(err)
