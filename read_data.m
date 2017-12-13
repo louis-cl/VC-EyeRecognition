@@ -2,7 +2,7 @@ function data = read_data(data_dir)
     imf = dir(strcat(data_dir, '*.pgm')); % llista d'imatges amb extensio bmp
     n = length(imf); % nombre d'imatges en el directori
     %images = zeros([n,100,100]); % array n imatges de mida 100 x 100
-    n = 10;
+    n = 100;
     data = cell(1,n);
 
     for i = 1 : n

@@ -10,5 +10,7 @@ function [ img1, img2 ] = extract_eye_image(eyeElem, eyesize)
     img2 = imcrop(eyeElem.image, [eyeElem.eyepos(2,:) - m, 2*m, 2*m]);
     img1 = imresize(img1, eyesize);
     img2 = imresize(img2, eyesize);
+%    imshow(img1);
+%    imshow(img2);
 end
 
