@@ -6,6 +6,7 @@ function [non_eye_data] = generate_non_eye_data(data, non_eye_per_image, crop_si
 % return non_eye_data: a table of descriptors
     non_eye_data = struct();
     first = true;
+    crop_size = crop_size - 1; % imcrop random behaviour
     for i = length(data):-1:1
         dt = data{i};
         % generate top-left points randomly; (X,Y) in image is (col, row)

@@ -13,3 +13,10 @@ function [features] = generate_features(im)
     end
 end
 
+function [feat] = Hog (im)
+    feat = extractHOGFeatures(im);
+    
+end
+function [feat] = nice(im)
+    feat = sum(sum(im));
+end
