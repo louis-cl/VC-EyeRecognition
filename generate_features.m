@@ -3,17 +3,13 @@ function [features] = generate_features(im)
 %   param im:           image to describe
 %   return features:    struct of features
     
-    fs = {@std2, @mean2, @Hog}; % stupid test features
+    fs = {@std2, @mean2}; % stupid test features
     features = struct();
     
     for i = 1:size(fs,2)
         f = fs{i};
         finfo = functions(f);
-        funresult = f(im);
-        for j=1:size(funresult,2)
-            name = strcat(finfo.function,int2str(j));
-            features.(name) = funresult(j);
-        end
+        features.(finfo.function) = f(im);
     end
 end
 
