@@ -9,7 +9,11 @@ function [features] = generate_features(im)
     for i = 1:size(fs,2)
         f = fs{i};
         finfo = functions(f);
-        features.(finfo.function) = f(im);
+        funresult = f(im);
+        for j=1:size(funresult,2)
+             name = strcat(finfo.function,int2str(j));
+             features.(name) = funresult(j);
+        end
     end
 end
 
