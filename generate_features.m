@@ -3,7 +3,7 @@ function [features] = generate_features(im)
 %   param im:           image to describe
 %   return features:    struct of features
     
-    fs = {@std2, @mean2}; % stupid test features
+    fs = {@std2, @mean2,@Hog, @nice}; % stupid test features
     features = struct();
     
     for i = 1:size(fs,2)
@@ -24,3 +24,4 @@ end
 function [feat] = nice(im)
     feat = sum(sum(im));
 end
+
