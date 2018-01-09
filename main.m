@@ -31,7 +31,7 @@ testing_nolabel = testing_data;
 testing_nolabel.class = []; % remove class column
 prediction = predict(model, testing_nolabel);
 
-conf_matrix = eval_prediction(prediction, testing_data.class)
+[conf_matrix,order ] = eval_prediction(prediction, testing_data.class)
 
 
 % TODO : Normalizar lluminositat
@@ -65,4 +65,4 @@ testing_nolabel.looking = [];
 predictionLook = predict(modelLook, testing_nolabel);
 
 looking_labels = cellstr(num2str(testing_data_look.looking));
-conf_matrix_look = eval_prediction (predictionLook, looking_labels)
+[conf_matrix_look,orderlook] = eval_prediction (predictionLook, looking_labels)

@@ -3,7 +3,7 @@ function [features] = generate_features(im)
 %   param im:           image to describe
 %   return features:    struct of features
     
-    fs = {@std2, @mean2,@Hog, @nice}; % stupid test features
+    fs = {@std2, @mean2, @extractLBPFeatures, @nice}; % stupid test features
     features = struct();
     
     for i = 1:size(fs,2)
@@ -17,7 +17,7 @@ function [features] = generate_features(im)
     end
 end
 
-function [feat] = Hog (im)
+function [feat] = Hog (im) % Tarda molt i no millora massa els resultats
     feat = extractHOGFeatures(im);
     
 end
