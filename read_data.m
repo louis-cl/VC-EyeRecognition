@@ -4,6 +4,7 @@ function data = read_data(data_dir)
     %images = zeros([n,100,100]); % array n imatges de mida 100 x 100
     n = 100;
     data = cell(1,n);
+    looking_column = read_looking_data('Miram.xlsx');
 
     for i = 1 : n
          name = imf(i).name;
@@ -18,7 +19,7 @@ function data = read_data(data_dir)
          end
 
 %         images(i,:,:) = imresize(im,[100 100]);
-         data{i}= struct('image', im, 'eyepos', readEye(name_eye), 'looking', false);
+         data{i}= struct('image', im, 'eyepos', readEye(name_eye), 'looking', looking_column(i));
     end
 
     % mostrem les imatges
