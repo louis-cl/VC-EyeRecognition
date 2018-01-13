@@ -1,7 +1,7 @@
 % LOAD variable data
 if ~exist('data', 'var') % reload only if needed
     %addpath data;
-    data = read_data('I:\vc\Short Project\');
+    data = read_data('data\', 100);
     n = length(data);
 end
 
@@ -20,11 +20,13 @@ non_eye_data.class = repmat({non_eye_class}, height(non_eye_data), 1);
 
 % separate training, testing data
 [ training_data, testing_data ] = split_data(eye_data, non_eye_data);
+clearvars eye_data non_eye_data
 
 % train model
 %model = fitcsvm(training_data, 'class');
 model = TreeBagger(100,training_data,'class');
 % Use ResponseVarName to specify label 'class'
+clearvars training_data
 
 % test model: precision, recall, accuracy
 testing_nolabel = testing_data;
@@ -37,8 +39,7 @@ prediction = predict(model, testing_nolabel);
 % TODO : Normalizar lluminositat
 % TODO : Generate vector features per passar ho
 
-
-
+return;
 % read https://www.researchgate.net/publication/262987479_Efficient_eye_detection_using_HOG-PCA_descriptor
 %COMPARACIONS
 %Lluminositat normalitzada

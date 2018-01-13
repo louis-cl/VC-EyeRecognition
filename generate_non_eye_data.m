@@ -17,12 +17,6 @@ function [non_eye_data] = generate_non_eye_data(data, non_eye_per_image, crop_si
             img = imcrop(dt.image, [start_points(j,:), crop_size]);
             % generate descriptors
             des = generate_features(img);
-            if isnan(des.std21)
-                size(img)
-                size(dt.image)
-                start_points(j,:)
-                break;
-            end
             if first
                 non_eye_data = des;
                 first = false;

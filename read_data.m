@@ -1,8 +1,10 @@
-function data = read_data(data_dir)
+function data = read_data(data_dir, n_opt)
     imf = dir(strcat(data_dir, '*.pgm')); % llista d'imatges amb extensio bmp
     n = length(imf); % nombre d'imatges en el directori
+    if nargin > 1
+        n = n_opt;
+    end
     %images = zeros([n,100,100]); % array n imatges de mida 100 x 100
-    n = 100;
     data = cell(1,n);
     looking_column = read_looking_data('Miram.xlsx');
 
